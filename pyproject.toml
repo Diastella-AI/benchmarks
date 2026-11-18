@@ -1,0 +1,16 @@
+[project]
+name = "diastella-benchmarks"
+version = "0.1.0"
+description = "The benchmarks behind Diastella's published numbers: what a project's failure memory finds, replayed on public history with no language model."
+readme = "README.md"
+license = "Apache-2.0"
+requires-python = ">=3.12"
+dependencies = [
+    "fastembed>=0.7",
+    "python-dotenv>=1.2.4",
+    "pyyaml>=6.0.3",
+    "qdrant-client>=1.15",
+]
+
+[tool.uv]
+package = false

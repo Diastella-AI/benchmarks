@@ -1,0 +1,2564 @@
+{
+ "run_on": "2026-11-17",
+ "method": "For every such pair where the upstream bug was already reported when the downstream report was written, the upstream project's memory is cut back to the day of the downstream report, the downstream reporter's own words are the question (their title; links and issue numbers removed), and each way of searching returns upstream bug reports. A search \"hits\" when the linked upstream bug is among the first reports returned.",
+ "limits": [
+  "The links are the ones GitHub records when a report or a comment in one repository mentions an issue in another. A mention is not proof that the upstream bug was the cause: some are 'possibly related'. Nobody read the pairs to remove those.",
+  "Only pairs where the upstream bug had already been reported when the downstream report was written are replayed, since only then could a memory have answered. The upstream memory is cut to the day before the downstream report.",
+  "The question is the downstream reporter's title with links and issue numbers removed. The longer question (title and start of the text, cleaned and cut to 600 characters as the hosted tool does) leaves out reports that quote the upstream bug's title.",
+  "Reports opened by bots, dependency-update notices and release notes are removed by rules on the title and author; some will have slipped through and some real reports will have been removed.",
+  "The upstream project is told to the search except in the rows marked 'project not named', where all 22 stored projects are searched at once. In real use the candidates would be the project's own dependencies, which this test does not model.",
+  "The search reads as the hosted tool reads: 30 records from 120 per half, the first 20 reports. Only bug-labelled upstream reports are stored, at most 480 per project, so an upstream bug outside that window cannot be an answer and is not counted.",
+  "No language model and no agent is involved; the only model is the embedding model behind search by meaning (all-MiniLM-L6-v2)."
+ ],
+ "links": {
+  "upstream_bug_reports_checked": 9863,
+  "mentioned_by_an_issue_in_another_repository": 1021,
+  "questions_replayed": 1005
+ },
+ "asked_with_the_title": {
+  "every pair": {
+   "questions": 1005,
+   "upstream_projects": 24,
+   "downstream_projects": 737,
+   "found_in_the_first": {
+    "Diastella's search": {
+     "1": 0.3522,
+     "5": 0.5562,
+     "10": 0.6318
+    },
+    "keywords alone": {
+     "1": 0.3393,
+     "5": 0.5214,
+     "10": 0.5871
+    },
+    "meaning alone": {
+     "1": 0.2856,
+     "5": 0.4826,
+     "10": 0.5751
+    },
+    "Diastella's search, project not named": {
+     "1": 0.2985,
+     "5": 0.4577,
+     "10": 0.5234
+    },
+    "keywords alone, project not named": {
+     "1": 0.2955,
+     "5": 0.4388,
+     "10": 0.4955
+    },
+    "meaning alone, project not named": {
+     "1": 0.2378,
+     "5": 0.3871,
+     "10": 0.4587
+    },
+    "rule: the most recently reported bugs": {
+     "1": 0.1373,
+     "5": 0.2746,
+     "10": 0.3602
+    }
+   },
+   "by_chance_in_the_first_5": 0.0406,
+   "product_against_each_other_in_the_first_5": {
+    "keywords alone": {
+     "difference": 0.0348,
+     "only_first": 57,
+     "only_second": 22,
+     "p": 0.0001,
+     "interval_95": [
+      0.0179,
+      0.0517
+     ],
+     "interval_95_by_project": [
+      0.0151,
+      0.0517
+     ]
+    },
+    "meaning alone": {
+     "difference": 0.0736,
+     "only_first": 98,
+     "only_second": 24,
+     "p": "<0.0001",
+     "interval_95": [
+      0.0527,
+      0.0955
+     ],
+     "interval_95_by_project": [
+      0.0501,
+      0.0957
+     ]
+    },
+    "Diastella's search, project not named": {
+     "difference": 0.0985,
+     "only_first": 99,
+     "only_second": 0,
+     "p": "<0.0001",
+     "interval_95": [
+      0.0796,
+      0.1174
+     ],
+     "interval_95_by_project": [
+      0.0785,
+      0.121
+     ]
+    },
+    "keywords alone, project not named": {
+     "difference": 0.1174,
+     "only_first": 126,
+     "only_second": 8,
+     "p": "<0.0001",
+     "interval_95": [
+      0.0975,
+      0.1393
+     ],
+     "interval_95_by_project": [
+      0.0954,
+      0.1408
+     ]
+    },
+    "meaning alone, project not named": {
+     "difference": 0.1692,
+     "only_first": 180,
+     "only_second": 10,
+     "p": "<0.0001",
+     "interval_95": [
+      0.1443,
+      0.194
+     ],
+     "interval_95_by_project": [
+      0.1449,
+      0.2012
+     ]
+    },
+    "rule: the most recently reported bugs": {
+     "difference": 0.2816,
+     "only_first": 387,
+     "only_second": 104,
+     "p": "<0.0001",
+     "interval_95": [
+      0.2418,
+      0.3204
+     ],
+     "interval_95_by_project": [
+      0.2485,
+      0.3245
+     ]
+    }
+   },
+   "per_upstream_project_first_5": {
+    "PrefectHQ/prefect": {
+     "questions": 5,
+     "Diastella's search": 0.4,
+     "keywords alone": 0.4,
+     "meaning alone": 0.4,
+     "rule: the most recently reported bugs": 0.4
+    },
+    "argoproj/argo-cd": {
+     "questions": 19,
+     "Diastella's search": 0.4211,
+     "keywords alone": 0.4211,
+     "meaning alone": 0.3684,
+     "rule: the most recently reported bugs": 0.1579
+    },
+    "caddyserver/caddy": {
+     "questions": 73,
+     "Diastella's search": 0.5205,
+     "keywords alone": 0.4658,
+     "meaning alone": 0.411,
+     "rule: the most recently reported bugs": 0.2466
+    },
+    "celery/celery": {
+     "questions": 36,
+     "Diastella's search": 0.4444,
+     "keywords alone": 0.4444,
+     "meaning alone": 0.3889,
+     "rule: the most recently reported bugs": 0.1944
+    },
+    "cli/cli": {
+     "questions": 77,
+     "Diastella's search": 0.4805,
+     "keywords alone": 0.4805,
+     "meaning alone": 0.4156,
+     "rule: the most recently reported bugs": 0.1948
+    },
+    "dapr/dapr": {
+     "questions": 43,
+     "Diastella's search": 0.6279,
+     "keywords alone": 0.6047,
+     "meaning alone": 0.5814,
+     "rule: the most recently reported bugs": 0.4186
+    },
+    "encode/httpx": {
+     "questions": 56,
+     "Diastella's search": 0.6071,
+     "keywords alone": 0.5179,
+     "meaning alone": 0.625,
+     "rule: the most recently reported bugs": 0.125
+    },
+    "fastapi/fastapi": {
+     "questions": 34,
+     "Diastella's search": 0.7059,
+     "keywords alone": 0.6176,
+     "meaning alone": 0.6765,
+     "rule: the most recently reported bugs": 0.3824
+    },
+    "gradio-app/gradio": {
+     "questions": 4,
+     "Diastella's search": 0.25,
+     "keywords alone": 0.25,
+     "meaning alone": 0.0,
+     "rule: the most recently reported bugs": 0.25
+    },
+    "grafana/k6": {
+     "questions": 36,
+     "Diastella's search": 0.6667,
+     "keywords alone": 0.6389,
+     "meaning alone": 0.6111,
+     "rule: the most recently reported bugs": 0.25
+    },
+    "kornia/kornia": {
+     "questions": 7,
+     "Diastella's search": 0.4286,
+     "keywords alone": 0.4286,
+     "meaning alone": 0.4286,
+     "rule: the most recently reported bugs": 0.4286
+    },
+    "kubeflow/pipelines": {
+     "questions": 22,
+     "Diastella's search": 0.5909,
+     "keywords alone": 0.6364,
+     "meaning alone": 0.6364,
+     "rule: the most recently reported bugs": 0.2273
+    },
+    "mlflow/mlflow": {
+     "questions": 6,
+     "Diastella's search": 0.8333,
+     "keywords alone": 1.0,
+     "meaning alone": 0.6667,
+     "rule: the most recently reported bugs": 0.0
+    },
+    "nestjs/nest": {
+     "questions": 7,
+     "Diastella's search": 0.5714,
+     "keywords alone": 0.7143,
+     "meaning alone": 0.5714,
+     "rule: the most recently reported bugs": 0.5714
+    },
+    "open-telemetry/opentelemetry-demo": {
+     "questions": 18,
+     "Diastella's search": 0.4444,
+     "keywords alone": 0.3889,
+     "meaning alone": 0.4444,
+     "rule: the most recently reported bugs": 0.3333
+    },
+    "prometheus/alertmanager": {
+     "questions": 14,
+     "Diastella's search": 0.7143,
+     "keywords alone": 0.7143,
+     "meaning alone": 0.6429,
+     "rule: the most recently reported bugs": 0.2857
+    },
+    "pydantic/pydantic": {
+     "questions": 46,
+     "Diastella's search": 0.5435,
+     "keywords alone": 0.5652,
+     "meaning alone": 0.3043,
+     "rule: the most recently reported bugs": 0.1739
+    },
+    "pytest-dev/pytest": {
+     "questions": 145,
+     "Diastella's search": 0.4069,
+     "keywords alone": 0.3724,
+     "meaning alone": 0.3172,
+     "rule: the most recently reported bugs": 0.2
+    },
+    "scrapy/scrapy": {
+     "questions": 34,
+     "Diastella's search": 0.5294,
+     "keywords alone": 0.5,
+     "meaning alone": 0.4706,
+     "rule: the most recently reported bugs": 0.2353
+    },
+    "streamlit/streamlit": {
+     "questions": 14,
+     "Diastella's search": 0.9286,
+     "keywords alone": 0.9286,
+     "meaning alone": 0.8571,
+     "rule: the most recently reported bugs": 0.5
+    },
+    "sveltejs/svelte": {
+     "questions": 69,
+     "Diastella's search": 0.5942,
+     "keywords alone": 0.5942,
+     "meaning alone": 0.5362,
+     "rule: the most recently reported bugs": 0.2754
+    },
+    "tokio-rs/tokio": {
+     "questions": 56,
+     "Diastella's search": 0.5536,
+     "keywords alone": 0.5,
+     "meaning alone": 0.4286,
+     "rule: the most recently reported bugs": 0.2679
+    },
+    "traefik/traefik": {
+     "questions": 64,
+     "Diastella's search": 0.75,
+     "keywords alone": 0.6562,
+     "meaning alone": 0.6562,
+     "rule: the most recently reported bugs": 0.5312
+    },
+    "vitejs/vite": {
+     "questions": 120,
+     "Diastella's search": 0.5833,
+     "keywords alone": 0.5083,
+     "meaning alone": 0.5167,
+     "rule: the most recently reported bugs": 0.3417
+    }
+   }
+  },
+  "the upstream bug was already fixed": {
+   "questions": 214,
+   "upstream_projects": 22,
+   "downstream_projects": 186,
+   "found_in_the_first": {
+    "Diastella's search": {
+     "1": 0.3084,
+     "5": 0.514,
+     "10": 0.5935
+    },
+    "keywords alone": {
+     "1": 0.271,
+     "5": 0.472,
+     "10": 0.528
+    },
+    "meaning alone": {
+     "1": 0.2383,
+     "5": 0.4299,
+     "10": 0.5047
+    },
+    "Diastella's search, project not named": {
+     "1": 0.2383,
+     "5": 0.4065,
+     "10": 0.4673
+    },
+    "keywords alone, project not named": {
+     "1": 0.229,
+     "5": 0.3785,
+     "10": 0.4439
+    },
+    "meaning alone, project not named": {
+     "1": 0.1916,
+     "5": 0.3131,
+     "10": 0.3692
+    },
+    "rule: the most recently reported bugs": {
+     "1": 0.0701,
+     "5": 0.1729,
+     "10": 0.2617
+    }
+   },
+   "by_chance_in_the_first_5": 0.0289,
+   "product_against_each_other_in_the_first_5": {
+    "keywords alone": {
+     "difference": 0.0421,
+     "only_first": 14,
+     "only_second": 5,
+     "p": 0.0636,
+     "interval_95": [
+      0.0047,
+      0.0841
+     ],
+     "interval_95_by_project": [
+      0.0144,
+      0.0853
+     ]
+    },
+    "meaning alone": {
+     "difference": 0.0841,
+     "only_first": 26,
+     "only_second": 8,
+     "p": 0.0029,
+     "interval_95": [
+      0.0327,
+      0.1355
+     ],
+     "interval_95_by_project": [
+      0.0208,
+      0.1452
+     ]
+    },
+    "Diastella's search, project not named": {
+     "difference": 0.1075,
+     "only_first": 23,
+     "only_second": 0,
+     "p": "<0.0001",
+     "interval_95": [
+      0.0654,
+      0.1495
+     ],
+     "interval_95_by_project": [
+      0.0598,
+      0.1777
+     ]
+    },
+    "keywords alone, project not named": {
+     "difference": 0.1355,
+     "only_first": 30,
+     "only_second": 1,
+     "p": "<0.0001",
+     "interval_95": [
+      0.0888,
+      0.1869
+     ],
+     "interval_95_by_project": [
+      0.0865,
+      0.2124
+     ]
+    },
+    "meaning alone, project not named": {
+     "difference": 0.2009,
+     "only_first": 45,
+     "only_second": 2,
+     "p": "<0.0001",
+     "interval_95": [
+      0.1449,
+      0.257
+     ],
+     "interval_95_by_project": [
+      0.1449,
+      0.2734
+     ]
+    },
+    "rule: the most recently reported bugs": {
+     "difference": 0.3411,
+     "only_first": 92,
+     "only_second": 19,
+     "p": "<0.0001",
+     "interval_95": [
+      0.257,
+      0.4252
+     ],
+     "interval_95_by_project": [
+      0.2376,
+      0.4631
+     ]
+    }
+   },
+   "per_upstream_project_first_5": {
+    "argoproj/argo-cd": {
+     "questions": 4,
+     "Diastella's search": 0.25,
+     "keywords alone": 0.25,
+     "meaning alone": 0.5,
+     "rule: the most recently reported bugs": 0.0
+    },
+    "caddyserver/caddy": {
+     "questions": 25,
+     "Diastella's search": 0.6,
+     "keywords alone": 0.6,
+     "meaning alone": 0.44,
+     "rule: the most recently reported bugs": 0.12
+    },
+    "celery/celery": {
+     "questions": 4,
+     "Diastella's search": 0.75,
+     "keywords alone": 0.75,
+     "meaning alone": 0.25,
+     "rule: the most recently reported bugs": 0.0
+    },
+    "cli/cli": {
+     "questions": 12,
+     "Diastella's search": 0.5,
+     "keywords alone": 0.25,
+     "meaning alone": 0.4167,
+     "rule: the most recently reported bugs": 0.25
+    },
+    "dapr/dapr": {
+     "questions": 13,
+     "Diastella's search": 0.9231,
+     "keywords alone": 0.9231,
+     "meaning alone": 0.8462,
+     "rule: the most recently reported bugs": 0.5385
+    },
+    "encode/httpx": {
+     "questions": 21,
+     "Diastella's search": 0.5714,
+     "keywords alone": 0.5238,
+     "meaning alone": 0.6667,
+     "rule: the most recently reported bugs": 0.0952
+    },
+    "fastapi/fastapi": {
+     "questions": 3,
+     "Diastella's search": 0.6667,
+     "keywords alone": 0.6667,
+     "meaning alone": 0.6667,
+     "rule: the most recently reported bugs": 0.0
+    },
+    "gradio-app/gradio": {
+     "questions": 1,
+     "Diastella's search": 0.0,
+     "keywords alone": 0.0,
+     "meaning alone": 0.0,
+     "rule: the most recently reported bugs": 0.0
+    },
+    "grafana/k6": {
+     "questions": 3,
+     "Diastella's search": 0.3333,
+     "keywords alone": 0.3333,
+     "meaning alone": 0.3333,
+     "rule: the most recently reported bugs": 0.0
+    },
+    "kornia/kornia": {
+     "questions": 3,
+     "Diastella's search": 0.3333,
+     "keywords alone": 0.3333,
+     "meaning alone": 0.6667,
+     "rule: the most recently reported bugs": 0.6667
+    },
+    "kubeflow/pipelines": {
+     "questions": 1,
+     "Diastella's search": 1.0,
+     "keywords alone": 1.0,
+     "meaning alone": 1.0,
+     "rule: the most recently reported bugs": 0.0
+    },
+    "mlflow/mlflow": {
+     "questions": 4,
+     "Diastella's search": 1.0,
+     "keywords alone": 1.0,
+     "meaning alone": 0.75,
+     "rule: the most recently reported bugs": 0.0
+    },
+    "open-telemetry/opentelemetry-demo": {
+     "questions": 9,
+     "Diastella's search": 0.5556,
+     "keywords alone": 0.5556,
+     "meaning alone": 0.5556,
+     "rule: the most recently reported bugs": 0.0
+    },
+    "prometheus/alertmanager": {
+     "questions": 4,
+     "Diastella's search": 1.0,
+     "keywords alone": 1.0,
+     "meaning alone": 1.0,
+     "rule: the most recently reported bugs": 0.0
+    },
+    "pydantic/pydantic": {
+     "questions": 16,
+     "Diastella's search": 0.4375,
+     "keywords alone": 0.4375,
+     "meaning alone": 0.1875,
+     "rule: the most recently reported bugs": 0.0
+    },
+    "pytest-dev/pytest": {
+     "questions": 49,
+     "Diastella's search": 0.2653,
+     "keywords alone": 0.2449,
+     "meaning alone": 0.1837,
+     "rule: the most recently reported bugs": 0.1429
+    },
+    "scrapy/scrapy": {
+     "questions": 7,
+     "Diastella's search": 0.5714,
+     "keywords alone": 0.4286,
+     "meaning alone": 0.4286,
+     "rule: the most recently reported bugs": 0.4286
+    },
+    "streamlit/streamlit": {
+     "questions": 3,
+     "Diastella's search": 0.6667,
+     "keywords alone": 0.6667,
+     "meaning alone": 0.3333,
+     "rule: the most recently reported bugs": 0.0
+    },
+    "sveltejs/svelte": {
+     "questions": 9,
+     "Diastella's search": 0.4444,
+     "keywords alone": 0.3333,
+     "meaning alone": 0.4444,
+     "rule: the most recently reported bugs": 0.3333
+    },
+    "tokio-rs/tokio": {
+     "questions": 12,
+     "Diastella's search": 0.5,
+     "keywords alone": 0.5,
+     "meaning alone": 0.25,
+     "rule: the most recently reported bugs": 0.1667
+    },
+    "traefik/traefik": {
+     "questions": 2,
+     "Diastella's search": 1.0,
+     "keywords alone": 1.0,
+     "meaning alone": 1.0,
+     "rule: the most recently reported bugs": 1.0
+    },
+    "vitejs/vite": {
+     "questions": 9,
+     "Diastella's search": 0.5556,
+     "keywords alone": 0.3333,
+     "meaning alone": 0.5556,
+     "rule: the most recently reported bugs": 0.3333
+    }
+   }
+  },
+  "the link was made on a later day than the report (its writer had not yet named the upstream bug)": {
+   "questions": 297,
+   "upstream_projects": 23,
+   "downstream_projects": 250,
+   "found_in_the_first": {
+    "Diastella's search": {
+     "1": 0.2256,
+     "5": 0.4175,
+     "10": 0.5051
+    },
+    "keywords alone": {
+     "1": 0.229,
+     "5": 0.3771,
+     "10": 0.4512
+    },
+    "meaning alone": {
+     "1": 0.1818,
+     "5": 0.3603,
+     "10": 0.4545
+    },
+    "Diastella's search, project not named": {
+     "1": 0.1852,
+     "5": 0.3199,
+     "10": 0.3939
+    },
+    "keywords alone, project not named": {
+     "1": 0.1886,
+     "5": 0.2997,
+     "10": 0.3535
+    },
+    "meaning alone, project not named": {
+     "1": 0.1347,
+     "5": 0.2626,
+     "10": 0.3468
+    },
+    "rule: the most recently reported bugs": {
+     "1": 0.0774,
+     "5": 0.1852,
+     "10": 0.2761
+    }
+   },
+   "by_chance_in_the_first_5": 0.0458,
+   "product_against_each_other_in_the_first_5": {
+    "keywords alone": {
+     "difference": 0.0404,
+     "only_first": 17,
+     "only_second": 5,
+     "p": 0.0169,
+     "interval_95": [
+      0.0101,
+      0.0707
+     ],
+     "interval_95_by_project": [
+      0.011,
+      0.0698
+     ]
+    },
+    "meaning alone": {
+     "difference": 0.0572,
+     "only_first": 26,
+     "only_second": 9,
+     "p": 0.006,
+     "interval_95": [
+      0.0202,
+      0.0943
+     ],
+     "interval_95_by_project": [
+      0.0139,
+      0.1044
+     ]
+    },
+    "Diastella's search, project not named": {
+     "difference": 0.0976,
+     "only_first": 29,
+     "only_second": 0,
+     "p": "<0.0001",
+     "interval_95": [
+      0.0673,
+      0.1347
+     ],
+     "interval_95_by_project": [
+      0.0713,
+      0.134
+     ]
+    },
+    "keywords alone, project not named": {
+     "difference": 0.1178,
+     "only_first": 37,
+     "only_second": 2,
+     "p": "<0.0001",
+     "interval_95": [
+      0.0774,
+      0.1549
+     ],
+     "interval_95_by_project": [
+      0.0736,
+      0.1631
+     ]
+    },
+    "meaning alone, project not named": {
+     "difference": 0.1549,
+     "only_first": 50,
+     "only_second": 4,
+     "p": "<0.0001",
+     "interval_95": [
+      0.1111,
+      0.1987
+     ],
+     "interval_95_by_project": [
+      0.1136,
+      0.2033
+     ]
+    },
+    "rule: the most recently reported bugs": {
+     "difference": 0.2323,
+     "only_first": 102,
+     "only_second": 33,
+     "p": "<0.0001",
+     "interval_95": [
+      0.1582,
+      0.3064
+     ],
+     "interval_95_by_project": [
+      0.1657,
+      0.2915
+     ]
+    }
+   },
+   "per_upstream_project_first_5": {
+    "argoproj/argo-cd": {
+     "questions": 5,
+     "Diastella's search": 0.2,
+     "keywords alone": 0.2,
+     "meaning alone": 0.2,
+     "rule: the most recently reported bugs": 0.0
+    },
+    "caddyserver/caddy": {
+     "questions": 20,
+     "Diastella's search": 0.35,
+     "keywords alone": 0.35,
+     "meaning alone": 0.2,
+     "rule: the most recently reported bugs": 0.15
+    },
+    "celery/celery": {
+     "questions": 7,
+     "Diastella's search": 0.0,
+     "keywords alone": 0.0,
+     "meaning alone": 0.1429,
+     "rule: the most recently reported bugs": 0.1429
+    },
+    "cli/cli": {
+     "questions": 14,
+     "Diastella's search": 0.3571,
+     "keywords alone": 0.3571,
+     "meaning alone": 0.2857,
+     "rule: the most recently reported bugs": 0.3571
+    },
+    "dapr/dapr": {
+     "questions": 8,
+     "Diastella's search": 0.375,
+     "keywords alone": 0.375,
+     "meaning alone": 0.25,
+     "rule: the most recently reported bugs": 0.0
+    },
+    "encode/httpx": {
+     "questions": 23,
+     "Diastella's search": 0.5652,
+     "keywords alone": 0.4783,
+     "meaning alone": 0.6087,
+     "rule: the most recently reported bugs": 0.087
+    },
+    "fastapi/fastapi": {
+     "questions": 13,
+     "Diastella's search": 0.6154,
+     "keywords alone": 0.4615,
+     "meaning alone": 0.6154,
+     "rule: the most recently reported bugs": 0.3846
+    },
+    "gradio-app/gradio": {
+     "questions": 1,
+     "Diastella's search": 0.0,
+     "keywords alone": 0.0,
+     "meaning alone": 0.0,
+     "rule: the most recently reported bugs": 0.0
+    },
+    "grafana/k6": {
+     "questions": 10,
+     "Diastella's search": 0.4,
+     "keywords alone": 0.4,
+     "meaning alone": 0.5,
+     "rule: the most recently reported bugs": 0.2
+    },
+    "kornia/kornia": {
+     "questions": 5,
+     "Diastella's search": 0.4,
+     "keywords alone": 0.4,
+     "meaning alone": 0.4,
+     "rule: the most recently reported bugs": 0.4
+    },
+    "kubeflow/pipelines": {
+     "questions": 6,
+     "Diastella's search": 0.6667,
+     "keywords alone": 0.6667,
+     "meaning alone": 0.6667,
+     "rule: the most recently reported bugs": 0.1667
+    },
+    "mlflow/mlflow": {
+     "questions": 1,
+     "Diastella's search": 1.0,
+     "keywords alone": 1.0,
+     "meaning alone": 1.0,
+     "rule: the most recently reported bugs": 0.0
+    },
+    "nestjs/nest": {
+     "questions": 3,
+     "Diastella's search": 0.3333,
+     "keywords alone": 0.3333,
+     "meaning alone": 0.3333,
+     "rule: the most recently reported bugs": 0.6667
+    },
+    "open-telemetry/opentelemetry-demo": {
+     "questions": 4,
+     "Diastella's search": 0.75,
+     "keywords alone": 0.75,
+     "meaning alone": 0.5,
+     "rule: the most recently reported bugs": 0.25
+    },
+    "prometheus/alertmanager": {
+     "questions": 3,
+     "Diastella's search": 0.3333,
+     "keywords alone": 0.3333,
+     "meaning alone": 0.3333,
+     "rule: the most recently reported bugs": 0.6667
+    },
+    "pydantic/pydantic": {
+     "questions": 16,
+     "Diastella's search": 0.3125,
+     "keywords alone": 0.3125,
+     "meaning alone": 0.0625,
+     "rule: the most recently reported bugs": 0.0625
+    },
+    "pytest-dev/pytest": {
+     "questions": 42,
+     "Diastella's search": 0.3095,
+     "keywords alone": 0.3095,
+     "meaning alone": 0.1905,
+     "rule: the most recently reported bugs": 0.1429
+    },
+    "scrapy/scrapy": {
+     "questions": 14,
+     "Diastella's search": 0.2857,
+     "keywords alone": 0.2857,
+     "meaning alone": 0.2857,
+     "rule: the most recently reported bugs": 0.0714
+    },
+    "streamlit/streamlit": {
+     "questions": 1,
+     "Diastella's search": 0.0,
+     "keywords alone": 0.0,
+     "meaning alone": 0.0,
+     "rule: the most recently reported bugs": 0.0
+    },
+    "sveltejs/svelte": {
+     "questions": 26,
+     "Diastella's search": 0.5,
+     "keywords alone": 0.4615,
+     "meaning alone": 0.4615,
+     "rule: the most recently reported bugs": 0.1923
+    },
+    "tokio-rs/tokio": {
+     "questions": 14,
+     "Diastella's search": 0.5,
+     "keywords alone": 0.5,
+     "meaning alone": 0.2857,
+     "rule: the most recently reported bugs": 0.2143
+    },
+    "traefik/traefik": {
+     "questions": 17,
+     "Diastella's search": 0.5882,
+     "keywords alone": 0.4118,
+     "meaning alone": 0.5294,
+     "rule: the most recently reported bugs": 0.4118
+    },
+    "vitejs/vite": {
+     "questions": 44,
+     "Diastella's search": 0.4318,
+     "keywords alone": 0.3409,
+     "meaning alone": 0.4318,
+     "rule: the most recently reported bugs": 0.1364
+    }
+   }
+  },
+  "worded differently from the upstream report (under half the title words shared)": {
+   "questions": 958,
+   "upstream_projects": 24,
+   "downstream_projects": 718,
+   "found_in_the_first": {
+    "Diastella's search": {
+     "1": 0.3215,
+     "5": 0.5344,
+     "10": 0.6138
+    },
+    "keywords alone": {
+     "1": 0.3069,
+     "5": 0.4979,
+     "10": 0.5668
+    },
+    "meaning alone": {
+     "1": 0.2537,
+     "5": 0.4572,
+     "10": 0.5543
+    },
+    "Diastella's search, project not named": {
+     "1": 0.2651,
+     "5": 0.4311,
+     "10": 0.5
+    },
+    "keywords alone, project not named": {
+     "1": 0.261,
+     "5": 0.4113,
+     "10": 0.4708
+    },
+    "meaning alone, project not named": {
+     "1": 0.2035,
+     "5": 0.357,
+     "10": 0.4322
+    },
+    "rule: the most recently reported bugs": {
+     "1": 0.1367,
+     "5": 0.2693,
+     "10": 0.3549
+    }
+   },
+   "by_chance_in_the_first_5": 0.0406,
+   "product_against_each_other_in_the_first_5": {
+    "keywords alone": {
+     "difference": 0.0365,
+     "only_first": 57,
+     "only_second": 22,
+     "p": 0.0001,
+     "interval_95": [
+      0.0198,
+      0.0553
+     ],
+     "interval_95_by_project": [
+      0.0159,
+      0.0545
+     ]
+    },
+    "meaning alone": {
+     "difference": 0.0772,
+     "only_first": 98,
+     "only_second": 24,
+     "p": "<0.0001",
+     "interval_95": [
+      0.0543,
+      0.0992
+     ],
+     "interval_95_by_project": [
+      0.0538,
+      0.0999
+     ]
+    },
+    "Diastella's search, project not named": {
+     "difference": 0.1033,
+     "only_first": 99,
+     "only_second": 0,
+     "p": "<0.0001",
+     "interval_95": [
+      0.0846,
+      0.1221
+     ],
+     "interval_95_by_project": [
+      0.0821,
+      0.1278
+     ]
+    },
+    "keywords alone, project not named": {
+     "difference": 0.1232,
+     "only_first": 126,
+     "only_second": 8,
+     "p": "<0.0001",
+     "interval_95": [
+      0.1013,
+      0.1451
+     ],
+     "interval_95_by_project": [
+      0.1,
+      0.1485
+     ]
+    },
+    "meaning alone, project not named": {
+     "difference": 0.1775,
+     "only_first": 180,
+     "only_second": 10,
+     "p": "<0.0001",
+     "interval_95": [
+      0.1514,
+      0.2046
+     ],
+     "interval_95_by_project": [
+      0.1531,
+      0.2095
+     ]
+    },
+    "rule: the most recently reported bugs": {
+     "difference": 0.2651,
+     "only_first": 358,
+     "only_second": 104,
+     "p": "<0.0001",
+     "interval_95": [
+      0.2265,
+      0.3079
+     ],
+     "interval_95_by_project": [
+      0.233,
+      0.3054
+     ]
+    }
+   },
+   "per_upstream_project_first_5": {
+    "PrefectHQ/prefect": {
+     "questions": 5,
+     "Diastella's search": 0.4,
+     "keywords alone": 0.4,
+     "meaning alone": 0.4,
+     "rule: the most recently reported bugs": 0.4
+    },
+    "argoproj/argo-cd": {
+     "questions": 18,
+     "Diastella's search": 0.3889,
+     "keywords alone": 0.3889,
+     "meaning alone": 0.3333,
+     "rule: the most recently reported bugs": 0.1667
+    },
+    "caddyserver/caddy": {
+     "questions": 72,
+     "Diastella's search": 0.5139,
+     "keywords alone": 0.4583,
+     "meaning alone": 0.4028,
+     "rule: the most recently reported bugs": 0.25
+    },
+    "celery/celery": {
+     "questions": 35,
+     "Diastella's search": 0.4286,
+     "keywords alone": 0.4286,
+     "meaning alone": 0.3714,
+     "rule: the most recently reported bugs": 0.1714
+    },
+    "cli/cli": {
+     "questions": 77,
+     "Diastella's search": 0.4805,
+     "keywords alone": 0.4805,
+     "meaning alone": 0.4156,
+     "rule: the most recently reported bugs": 0.1948
+    },
+    "dapr/dapr": {
+     "questions": 37,
+     "Diastella's search": 0.5676,
+     "keywords alone": 0.5405,
+     "meaning alone": 0.5135,
+     "rule: the most recently reported bugs": 0.4595
+    },
+    "encode/httpx": {
+     "questions": 49,
+     "Diastella's search": 0.551,
+     "keywords alone": 0.449,
+     "meaning alone": 0.5714,
+     "rule: the most recently reported bugs": 0.1224
+    },
+    "fastapi/fastapi": {
+     "questions": 34,
+     "Diastella's search": 0.7059,
+     "keywords alone": 0.6176,
+     "meaning alone": 0.6765,
+     "rule: the most recently reported bugs": 0.3824
+    },
+    "gradio-app/gradio": {
+     "questions": 4,
+     "Diastella's search": 0.25,
+     "keywords alone": 0.25,
+     "meaning alone": 0.0,
+     "rule: the most recently reported bugs": 0.25
+    },
+    "grafana/k6": {
+     "questions": 31,
+     "Diastella's search": 0.6129,
+     "keywords alone": 0.5806,
+     "meaning alone": 0.5484,
+     "rule: the most recently reported bugs": 0.2903
+    },
+    "kornia/kornia": {
+     "questions": 7,
+     "Diastella's search": 0.4286,
+     "keywords alone": 0.4286,
+     "meaning alone": 0.4286,
+     "rule: the most recently reported bugs": 0.4286
+    },
+    "kubeflow/pipelines": {
+     "questions": 20,
+     "Diastella's search": 0.55,
+     "keywords alone": 0.6,
+     "meaning alone": 0.6,
+     "rule: the most recently reported bugs": 0.15
+    },
+    "mlflow/mlflow": {
+     "questions": 6,
+     "Diastella's search": 0.8333,
+     "keywords alone": 1.0,
+     "meaning alone": 0.6667,
+     "rule: the most recently reported bugs": 0.0
+    },
+    "nestjs/nest": {
+     "questions": 7,
+     "Diastella's search": 0.5714,
+     "keywords alone": 0.7143,
+     "meaning alone": 0.5714,
+     "rule: the most recently reported bugs": 0.5714
+    },
+    "open-telemetry/opentelemetry-demo": {
+     "questions": 17,
+     "Diastella's search": 0.4118,
+     "keywords alone": 0.3529,
+     "meaning alone": 0.4118,
+     "rule: the most recently reported bugs": 0.3529
+    },
+    "prometheus/alertmanager": {
+     "questions": 12,
+     "Diastella's search": 0.6667,
+     "keywords alone": 0.6667,
+     "meaning alone": 0.5833,
+     "rule: the most recently reported bugs": 0.3333
+    },
+    "pydantic/pydantic": {
+     "questions": 46,
+     "Diastella's search": 0.5435,
+     "keywords alone": 0.5652,
+     "meaning alone": 0.3043,
+     "rule: the most recently reported bugs": 0.1739
+    },
+    "pytest-dev/pytest": {
+     "questions": 141,
+     "Diastella's search": 0.3901,
+     "keywords alone": 0.3546,
+     "meaning alone": 0.2979,
+     "rule: the most recently reported bugs": 0.1915
+    },
+    "scrapy/scrapy": {
+     "questions": 32,
+     "Diastella's search": 0.5,
+     "keywords alone": 0.4688,
+     "meaning alone": 0.4375,
+     "rule: the most recently reported bugs": 0.2188
+    },
+    "streamlit/streamlit": {
+     "questions": 10,
+     "Diastella's search": 0.9,
+     "keywords alone": 0.9,
+     "meaning alone": 0.8,
+     "rule: the most recently reported bugs": 0.3
+    },
+    "sveltejs/svelte": {
+     "questions": 67,
+     "Diastella's search": 0.5821,
+     "keywords alone": 0.5821,
+     "meaning alone": 0.5224,
+     "rule: the most recently reported bugs": 0.2687
+    },
+    "tokio-rs/tokio": {
+     "questions": 52,
+     "Diastella's search": 0.5192,
+     "keywords alone": 0.4615,
+     "meaning alone": 0.3846,
+     "rule: the most recently reported bugs": 0.2692
+    },
+    "traefik/traefik": {
+     "questions": 63,
+     "Diastella's search": 0.746,
+     "keywords alone": 0.6508,
+     "meaning alone": 0.6508,
+     "rule: the most recently reported bugs": 0.5238
+    },
+    "vitejs/vite": {
+     "questions": 116,
+     "Diastella's search": 0.569,
+     "keywords alone": 0.4914,
+     "meaning alone": 0.5,
+     "rule: the most recently reported bugs": 0.3276
+    }
+   }
+  }
+ },
+ "asked_with_the_start_of_the_report": {
+  "every pair": {
+   "questions": 974,
+   "upstream_projects": 24,
+   "downstream_projects": 724,
+   "found_in_the_first": {
+    "Diastella's search": {
+     "1": 0.4025,
+     "5": 0.6088,
+     "10": 0.6828
+    },
+    "keywords alone": {
+     "1": 0.3634,
+     "5": 0.5524,
+     "10": 0.6294
+    },
+    "meaning alone": {
+     "1": 0.3429,
+     "5": 0.5431,
+     "10": 0.6304
+    },
+    "Diastella's search, project not named": {
+     "1": 0.3717,
+     "5": 0.5595,
+     "10": 0.6263
+    },
+    "keywords alone, project not named": {
+     "1": 0.3285,
+     "5": 0.4949,
+     "10": 0.5565
+    },
+    "meaning alone, project not named": {
+     "1": 0.3172,
+     "5": 0.4897,
+     "10": 0.576
+    },
+    "rule: the most recently reported bugs": {
+     "1": 0.1335,
+     "5": 0.268,
+     "10": 0.3522
+    }
+   },
+   "by_chance_in_the_first_5": 0.0411,
+   "product_against_each_other_in_the_first_5": {
+    "keywords alone": {
+     "difference": 0.0565,
+     "only_first": 81,
+     "only_second": 26,
+     "p": "<0.0001",
+     "interval_95": [
+      0.037,
+      0.078
+     ],
+     "interval_95_by_project": [
+      0.0368,
+      0.0758
+     ]
+    },
+    "meaning alone": {
+     "difference": 0.0657,
+     "only_first": 95,
+     "only_second": 31,
+     "p": "<0.0001",
+     "interval_95": [
+      0.0441,
+      0.0883
+     ],
+     "interval_95_by_project": [
+      0.0338,
+      0.0905
+     ]
+    },
+    "Diastella's search, project not named": {
+     "difference": 0.0493,
+     "only_first": 50,
+     "only_second": 2,
+     "p": "<0.0001",
+     "interval_95": [
+      0.0359,
+      0.0626
+     ],
+     "interval_95_by_project": [
+      0.039,
+      0.0608
+     ]
+    },
+    "keywords alone, project not named": {
+     "difference": 0.114,
+     "only_first": 123,
+     "only_second": 12,
+     "p": "<0.0001",
+     "interval_95": [
+      0.0924,
+      0.1366
+     ],
+     "interval_95_by_project": [
+      0.0974,
+      0.1329
+     ]
+    },
+    "meaning alone, project not named": {
+     "difference": 0.1191,
+     "only_first": 136,
+     "only_second": 20,
+     "p": "<0.0001",
+     "interval_95": [
+      0.0955,
+      0.1437
+     ],
+     "interval_95_by_project": [
+      0.091,
+      0.1508
+     ]
+    },
+    "rule: the most recently reported bugs": {
+     "difference": 0.3409,
+     "only_first": 424,
+     "only_second": 92,
+     "p": "<0.0001",
+     "interval_95": [
+      0.2977,
+      0.3809
+     ],
+     "interval_95_by_project": [
+      0.3022,
+      0.39
+     ]
+    }
+   },
+   "per_upstream_project_first_5": {
+    "PrefectHQ/prefect": {
+     "questions": 5,
+     "Diastella's search": 0.8,
+     "keywords alone": 0.6,
+     "meaning alone": 0.4,
+     "rule: the most recently reported bugs": 0.4
+    },
+    "argoproj/argo-cd": {
+     "questions": 18,
+     "Diastella's search": 0.5,
+     "keywords alone": 0.3333,
+     "meaning alone": 0.4444,
+     "rule: the most recently reported bugs": 0.1667
+    },
+    "caddyserver/caddy": {
+     "questions": 73,
+     "Diastella's search": 0.6027,
+     "keywords alone": 0.5479,
+     "meaning alone": 0.4658,
+     "rule: the most recently reported bugs": 0.2466
+    },
+    "celery/celery": {
+     "questions": 35,
+     "Diastella's search": 0.6,
+     "keywords alone": 0.5143,
+     "meaning alone": 0.5429,
+     "rule: the most recently reported bugs": 0.1714
+    },
+    "cli/cli": {
+     "questions": 77,
+     "Diastella's search": 0.6364,
+     "keywords alone": 0.6623,
+     "meaning alone": 0.5584,
+     "rule: the most recently reported bugs": 0.1948
+    },
+    "dapr/dapr": {
+     "questions": 38,
+     "Diastella's search": 0.6842,
+     "keywords alone": 0.6579,
+     "meaning alone": 0.6316,
+     "rule: the most recently reported bugs": 0.4211
+    },
+    "encode/httpx": {
+     "questions": 55,
+     "Diastella's search": 0.7091,
+     "keywords alone": 0.6364,
+     "meaning alone": 0.7455,
+     "rule: the most recently reported bugs": 0.1273
+    },
+    "fastapi/fastapi": {
+     "questions": 34,
+     "Diastella's search": 0.6471,
+     "keywords alone": 0.5882,
+     "meaning alone": 0.5588,
+     "rule: the most recently reported bugs": 0.3824
+    },
+    "gradio-app/gradio": {
+     "questions": 4,
+     "Diastella's search": 0.25,
+     "keywords alone": 0.5,
+     "meaning alone": 0.25,
+     "rule: the most recently reported bugs": 0.25
+    },
+    "grafana/k6": {
+     "questions": 32,
+     "Diastella's search": 0.6875,
+     "keywords alone": 0.5625,
+     "meaning alone": 0.6562,
+     "rule: the most recently reported bugs": 0.2812
+    },
+    "kornia/kornia": {
+     "questions": 7,
+     "Diastella's search": 0.2857,
+     "keywords alone": 0.2857,
+     "meaning alone": 0.2857,
+     "rule: the most recently reported bugs": 0.4286
+    },
+    "kubeflow/pipelines": {
+     "questions": 22,
+     "Diastella's search": 0.6364,
+     "keywords alone": 0.5,
+     "meaning alone": 0.6364,
+     "rule: the most recently reported bugs": 0.2273
+    },
+    "mlflow/mlflow": {
+     "questions": 6,
+     "Diastella's search": 0.8333,
+     "keywords alone": 0.8333,
+     "meaning alone": 0.6667,
+     "rule: the most recently reported bugs": 0.0
+    },
+    "nestjs/nest": {
+     "questions": 7,
+     "Diastella's search": 0.5714,
+     "keywords alone": 0.4286,
+     "meaning alone": 0.4286,
+     "rule: the most recently reported bugs": 0.5714
+    },
+    "open-telemetry/opentelemetry-demo": {
+     "questions": 18,
+     "Diastella's search": 0.5,
+     "keywords alone": 0.4444,
+     "meaning alone": 0.4444,
+     "rule: the most recently reported bugs": 0.3333
+    },
+    "prometheus/alertmanager": {
+     "questions": 13,
+     "Diastella's search": 0.6923,
+     "keywords alone": 0.6154,
+     "meaning alone": 0.7692,
+     "rule: the most recently reported bugs": 0.3077
+    },
+    "pydantic/pydantic": {
+     "questions": 46,
+     "Diastella's search": 0.6304,
+     "keywords alone": 0.587,
+     "meaning alone": 0.4348,
+     "rule: the most recently reported bugs": 0.1739
+    },
+    "pytest-dev/pytest": {
+     "questions": 142,
+     "Diastella's search": 0.4718,
+     "keywords alone": 0.4085,
+     "meaning alone": 0.3803,
+     "rule: the most recently reported bugs": 0.1972
+    },
+    "scrapy/scrapy": {
+     "questions": 33,
+     "Diastella's search": 0.5455,
+     "keywords alone": 0.4545,
+     "meaning alone": 0.5758,
+     "rule: the most recently reported bugs": 0.2424
+    },
+    "streamlit/streamlit": {
+     "questions": 10,
+     "Diastella's search": 0.8,
+     "keywords alone": 0.7,
+     "meaning alone": 0.7,
+     "rule: the most recently reported bugs": 0.3
+    },
+    "sveltejs/svelte": {
+     "questions": 69,
+     "Diastella's search": 0.5942,
+     "keywords alone": 0.5652,
+     "meaning alone": 0.6232,
+     "rule: the most recently reported bugs": 0.2754
+    },
+    "tokio-rs/tokio": {
+     "questions": 54,
+     "Diastella's search": 0.5741,
+     "keywords alone": 0.5556,
+     "meaning alone": 0.4815,
+     "rule: the most recently reported bugs": 0.2778
+    },
+    "traefik/traefik": {
+     "questions": 57,
+     "Diastella's search": 0.7719,
+     "keywords alone": 0.7544,
+     "meaning alone": 0.7368,
+     "rule: the most recently reported bugs": 0.4912
+    },
+    "vitejs/vite": {
+     "questions": 119,
+     "Diastella's search": 0.6303,
+     "keywords alone": 0.5378,
+     "meaning alone": 0.5462,
+     "rule: the most recently reported bugs": 0.3361
+    }
+   }
+  },
+  "the upstream bug was already fixed": {
+   "questions": 212,
+   "upstream_projects": 22,
+   "downstream_projects": 185,
+   "found_in_the_first": {
+    "Diastella's search": {
+     "1": 0.3302,
+     "5": 0.5755,
+     "10": 0.6604
+    },
+    "keywords alone": {
+     "1": 0.3019,
+     "5": 0.5047,
+     "10": 0.5943
+    },
+    "meaning alone": {
+     "1": 0.2972,
+     "5": 0.5047,
+     "10": 0.5896
+    },
+    "Diastella's search, project not named": {
+     "1": 0.316,
+     "5": 0.5047,
+     "10": 0.5943
+    },
+    "keywords alone, project not named": {
+     "1": 0.2783,
+     "5": 0.4481,
+     "10": 0.5142
+    },
+    "meaning alone, project not named": {
+     "1": 0.2736,
+     "5": 0.4434,
+     "10": 0.533
+    },
+    "rule: the most recently reported bugs": {
+     "1": 0.0708,
+     "5": 0.1698,
+     "10": 0.2594
+    }
+   },
+   "by_chance_in_the_first_5": 0.0288,
+   "product_against_each_other_in_the_first_5": {
+    "keywords alone": {
+     "difference": 0.0708,
+     "only_first": 20,
+     "only_second": 5,
+     "p": 0.0041,
+     "interval_95": [
+      0.0283,
+      0.1132
+     ],
+     "interval_95_by_project": [
+      0.0378,
+      0.1159
+     ]
+    },
+    "meaning alone": {
+     "difference": 0.0708,
+     "only_first": 25,
+     "only_second": 10,
+     "p": 0.0167,
+     "interval_95": [
+      0.0189,
+      0.1274
+     ],
+     "interval_95_by_project": [
+      -0.0069,
+      0.1435
+     ]
+    },
+    "Diastella's search, project not named": {
+     "difference": 0.0708,
+     "only_first": 15,
+     "only_second": 0,
+     "p": "<0.0001",
+     "interval_95": [
+      0.0377,
+      0.1085
+     ],
+     "interval_95_by_project": [
+      0.0343,
+      0.1288
+     ]
+    },
+    "keywords alone, project not named": {
+     "difference": 0.1274,
+     "only_first": 29,
+     "only_second": 2,
+     "p": "<0.0001",
+     "interval_95": [
+      0.0802,
+      0.1792
+     ],
+     "interval_95_by_project": [
+      0.0783,
+      0.1934
+     ]
+    },
+    "meaning alone, project not named": {
+     "difference": 0.1321,
+     "only_first": 33,
+     "only_second": 5,
+     "p": "<0.0001",
+     "interval_95": [
+      0.0802,
+      0.184
+     ],
+     "interval_95_by_project": [
+      0.0479,
+      0.2247
+     ]
+    },
+    "rule: the most recently reported bugs": {
+     "difference": 0.4057,
+     "only_first": 101,
+     "only_second": 15,
+     "p": "<0.0001",
+     "interval_95": [
+      0.3255,
+      0.4858
+     ],
+     "interval_95_by_project": [
+      0.2981,
+      0.5333
+     ]
+    }
+   },
+   "per_upstream_project_first_5": {
+    "argoproj/argo-cd": {
+     "questions": 4,
+     "Diastella's search": 0.5,
+     "keywords alone": 0.25,
+     "meaning alone": 0.5,
+     "rule: the most recently reported bugs": 0.0
+    },
+    "caddyserver/caddy": {
+     "questions": 25,
+     "Diastella's search": 0.72,
+     "keywords alone": 0.68,
+     "meaning alone": 0.52,
+     "rule: the most recently reported bugs": 0.12
+    },
+    "celery/celery": {
+     "questions": 4,
+     "Diastella's search": 0.75,
+     "keywords alone": 0.5,
+     "meaning alone": 0.75,
+     "rule: the most recently reported bugs": 0.0
+    },
+    "cli/cli": {
+     "questions": 12,
+     "Diastella's search": 0.5833,
+     "keywords alone": 0.5,
+     "meaning alone": 0.5,
+     "rule: the most recently reported bugs": 0.25
+    },
+    "dapr/dapr": {
+     "questions": 12,
+     "Diastella's search": 0.8333,
+     "keywords alone": 0.8333,
+     "meaning alone": 0.8333,
+     "rule: the most recently reported bugs": 0.5
+    },
+    "encode/httpx": {
+     "questions": 20,
+     "Diastella's search": 0.7,
+     "keywords alone": 0.6,
+     "meaning alone": 0.8,
+     "rule: the most recently reported bugs": 0.1
+    },
+    "fastapi/fastapi": {
+     "questions": 3,
+     "Diastella's search": 1.0,
+     "keywords alone": 1.0,
+     "meaning alone": 1.0,
+     "rule: the most recently reported bugs": 0.0
+    },
+    "gradio-app/gradio": {
+     "questions": 1,
+     "Diastella's search": 0.0,
+     "keywords alone": 0.0,
+     "meaning alone": 0.0,
+     "rule: the most recently reported bugs": 0.0
+    },
+    "grafana/k6": {
+     "questions": 3,
+     "Diastella's search": 0.6667,
+     "keywords alone": 0.3333,
+     "meaning alone": 0.6667,
+     "rule: the most recently reported bugs": 0.0
+    },
+    "kornia/kornia": {
+     "questions": 3,
+     "Diastella's search": 0.3333,
+     "keywords alone": 0.3333,
+     "meaning alone": 0.3333,
+     "rule: the most recently reported bugs": 0.6667
+    },
+    "kubeflow/pipelines": {
+     "questions": 1,
+     "Diastella's search": 1.0,
+     "keywords alone": 1.0,
+     "meaning alone": 1.0,
+     "rule: the most recently reported bugs": 0.0
+    },
+    "mlflow/mlflow": {
+     "questions": 4,
+     "Diastella's search": 0.75,
+     "keywords alone": 0.75,
+     "meaning alone": 0.5,
+     "rule: the most recently reported bugs": 0.0
+    },
+    "open-telemetry/opentelemetry-demo": {
+     "questions": 9,
+     "Diastella's search": 0.5556,
+     "keywords alone": 0.4444,
+     "meaning alone": 0.5556,
+     "rule: the most recently reported bugs": 0.0
+    },
+    "prometheus/alertmanager": {
+     "questions": 4,
+     "Diastella's search": 1.0,
+     "keywords alone": 0.75,
+     "meaning alone": 1.0,
+     "rule: the most recently reported bugs": 0.0
+    },
+    "pydantic/pydantic": {
+     "questions": 16,
+     "Diastella's search": 0.5625,
+     "keywords alone": 0.4375,
+     "meaning alone": 0.1875,
+     "rule: the most recently reported bugs": 0.0
+    },
+    "pytest-dev/pytest": {
+     "questions": 49,
+     "Diastella's search": 0.3469,
+     "keywords alone": 0.3061,
+     "meaning alone": 0.2653,
+     "rule: the most recently reported bugs": 0.1429
+    },
+    "scrapy/scrapy": {
+     "questions": 7,
+     "Diastella's search": 0.7143,
+     "keywords alone": 0.4286,
+     "meaning alone": 0.7143,
+     "rule: the most recently reported bugs": 0.4286
+    },
+    "streamlit/streamlit": {
+     "questions": 3,
+     "Diastella's search": 0.6667,
+     "keywords alone": 0.6667,
+     "meaning alone": 0.3333,
+     "rule: the most recently reported bugs": 0.0
+    },
+    "sveltejs/svelte": {
+     "questions": 9,
+     "Diastella's search": 0.4444,
+     "keywords alone": 0.4444,
+     "meaning alone": 0.5556,
+     "rule: the most recently reported bugs": 0.3333
+    },
+    "tokio-rs/tokio": {
+     "questions": 12,
+     "Diastella's search": 0.4167,
+     "keywords alone": 0.5,
+     "meaning alone": 0.3333,
+     "rule: the most recently reported bugs": 0.1667
+    },
+    "traefik/traefik": {
+     "questions": 2,
+     "Diastella's search": 1.0,
+     "keywords alone": 0.5,
+     "meaning alone": 1.0,
+     "rule: the most recently reported bugs": 1.0
+    },
+    "vitejs/vite": {
+     "questions": 9,
+     "Diastella's search": 0.5556,
+     "keywords alone": 0.5556,
+     "meaning alone": 0.6667,
+     "rule: the most recently reported bugs": 0.3333
+    }
+   }
+  },
+  "the link was made on a later day than the report (its writer had not yet named the upstream bug)": {
+   "questions": 295,
+   "upstream_projects": 23,
+   "downstream_projects": 248,
+   "found_in_the_first": {
+    "Diastella's search": {
+     "1": 0.261,
+     "5": 0.4475,
+     "10": 0.5559
+    },
+    "keywords alone": {
+     "1": 0.2407,
+     "5": 0.4068,
+     "10": 0.5288
+    },
+    "meaning alone": {
+     "1": 0.2136,
+     "5": 0.4034,
+     "10": 0.5017
+    },
+    "Diastella's search, project not named": {
+     "1": 0.2271,
+     "5": 0.4034,
+     "10": 0.4847
+    },
+    "keywords alone, project not named": {
+     "1": 0.1966,
+     "5": 0.3424,
+     "10": 0.4203
+    },
+    "meaning alone, project not named": {
+     "1": 0.1932,
+     "5": 0.3424,
+     "10": 0.4475
+    },
+    "rule: the most recently reported bugs": {
+     "1": 0.0746,
+     "5": 0.1831,
+     "10": 0.2746
+    }
+   },
+   "by_chance_in_the_first_5": 0.046,
+   "product_against_each_other_in_the_first_5": {
+    "keywords alone": {
+     "difference": 0.0407,
+     "only_first": 23,
+     "only_second": 11,
+     "p": 0.0576,
+     "interval_95": [
+      0.0,
+      0.0814
+     ],
+     "interval_95_by_project": [
+      0.0,
+      0.071
+     ]
+    },
+    "meaning alone": {
+     "difference": 0.0441,
+     "only_first": 27,
+     "only_second": 14,
+     "p": 0.0596,
+     "interval_95": [
+      0.0,
+      0.0881
+     ],
+     "interval_95_by_project": [
+      -0.006,
+      0.0944
+     ]
+    },
+    "Diastella's search, project not named": {
+     "difference": 0.0441,
+     "only_first": 14,
+     "only_second": 1,
+     "p": 0.001,
+     "interval_95": [
+      0.0203,
+      0.0712
+     ],
+     "interval_95_by_project": [
+      0.0245,
+      0.0702
+     ]
+    },
+    "keywords alone, project not named": {
+     "difference": 0.1051,
+     "only_first": 36,
+     "only_second": 5,
+     "p": "<0.0001",
+     "interval_95": [
+      0.0644,
+      0.1492
+     ],
+     "interval_95_by_project": [
+      0.0737,
+      0.1418
+     ]
+    },
+    "meaning alone, project not named": {
+     "difference": 0.1051,
+     "only_first": 38,
+     "only_second": 7,
+     "p": "<0.0001",
+     "interval_95": [
+      0.0644,
+      0.1492
+     ],
+     "interval_95_by_project": [
+      0.0618,
+      0.1558
+     ]
+    },
+    "rule: the most recently reported bugs": {
+     "difference": 0.2644,
+     "only_first": 109,
+     "only_second": 31,
+     "p": "<0.0001",
+     "interval_95": [
+      0.1932,
+      0.339
+     ],
+     "interval_95_by_project": [
+      0.1877,
+      0.3346
+     ]
+    }
+   },
+   "per_upstream_project_first_5": {
+    "argoproj/argo-cd": {
+     "questions": 5,
+     "Diastella's search": 0.2,
+     "keywords alone": 0.2,
+     "meaning alone": 0.2,
+     "rule: the most recently reported bugs": 0.0
+    },
+    "caddyserver/caddy": {
+     "questions": 20,
+     "Diastella's search": 0.4,
+     "keywords alone": 0.3,
+     "meaning alone": 0.25,
+     "rule: the most recently reported bugs": 0.15
+    },
+    "celery/celery": {
+     "questions": 7,
+     "Diastella's search": 0.2857,
+     "keywords alone": 0.1429,
+     "meaning alone": 0.2857,
+     "rule: the most recently reported bugs": 0.1429
+    },
+    "cli/cli": {
+     "questions": 14,
+     "Diastella's search": 0.2857,
+     "keywords alone": 0.3571,
+     "meaning alone": 0.2857,
+     "rule: the most recently reported bugs": 0.3571
+    },
+    "dapr/dapr": {
+     "questions": 8,
+     "Diastella's search": 0.375,
+     "keywords alone": 0.375,
+     "meaning alone": 0.25,
+     "rule: the most recently reported bugs": 0.0
+    },
+    "encode/httpx": {
+     "questions": 23,
+     "Diastella's search": 0.6087,
+     "keywords alone": 0.5652,
+     "meaning alone": 0.6957,
+     "rule: the most recently reported bugs": 0.087
+    },
+    "fastapi/fastapi": {
+     "questions": 13,
+     "Diastella's search": 0.6154,
+     "keywords alone": 0.5385,
+     "meaning alone": 0.5385,
+     "rule: the most recently reported bugs": 0.3846
+    },
+    "gradio-app/gradio": {
+     "questions": 1,
+     "Diastella's search": 0.0,
+     "keywords alone": 0.0,
+     "meaning alone": 0.0,
+     "rule: the most recently reported bugs": 0.0
+    },
+    "grafana/k6": {
+     "questions": 10,
+     "Diastella's search": 0.4,
+     "keywords alone": 0.5,
+     "meaning alone": 0.3,
+     "rule: the most recently reported bugs": 0.2
+    },
+    "kornia/kornia": {
+     "questions": 5,
+     "Diastella's search": 0.2,
+     "keywords alone": 0.2,
+     "meaning alone": 0.2,
+     "rule: the most recently reported bugs": 0.4
+    },
+    "kubeflow/pipelines": {
+     "questions": 6,
+     "Diastella's search": 0.6667,
+     "keywords alone": 0.3333,
+     "meaning alone": 0.6667,
+     "rule: the most recently reported bugs": 0.1667
+    },
+    "mlflow/mlflow": {
+     "questions": 1,
+     "Diastella's search": 1.0,
+     "keywords alone": 1.0,
+     "meaning alone": 1.0,
+     "rule: the most recently reported bugs": 0.0
+    },
+    "nestjs/nest": {
+     "questions": 3,
+     "Diastella's search": 0.3333,
+     "keywords alone": 0.0,
+     "meaning alone": 0.3333,
+     "rule: the most recently reported bugs": 0.6667
+    },
+    "open-telemetry/opentelemetry-demo": {
+     "questions": 4,
+     "Diastella's search": 0.75,
+     "keywords alone": 0.5,
+     "meaning alone": 0.5,
+     "rule: the most recently reported bugs": 0.25
+    },
+    "prometheus/alertmanager": {
+     "questions": 3,
+     "Diastella's search": 0.3333,
+     "keywords alone": 0.3333,
+     "meaning alone": 0.3333,
+     "rule: the most recently reported bugs": 0.6667
+    },
+    "pydantic/pydantic": {
+     "questions": 16,
+     "Diastella's search": 0.5,
+     "keywords alone": 0.5,
+     "meaning alone": 0.25,
+     "rule: the most recently reported bugs": 0.0625
+    },
+    "pytest-dev/pytest": {
+     "questions": 42,
+     "Diastella's search": 0.381,
+     "keywords alone": 0.3095,
+     "meaning alone": 0.2857,
+     "rule: the most recently reported bugs": 0.1429
+    },
+    "scrapy/scrapy": {
+     "questions": 14,
+     "Diastella's search": 0.2143,
+     "keywords alone": 0.2143,
+     "meaning alone": 0.3571,
+     "rule: the most recently reported bugs": 0.0714
+    },
+    "streamlit/streamlit": {
+     "questions": 1,
+     "Diastella's search": 0.0,
+     "keywords alone": 0.0,
+     "meaning alone": 0.0,
+     "rule: the most recently reported bugs": 0.0
+    },
+    "sveltejs/svelte": {
+     "questions": 26,
+     "Diastella's search": 0.6154,
+     "keywords alone": 0.6154,
+     "meaning alone": 0.6923,
+     "rule: the most recently reported bugs": 0.1923
+    },
+    "tokio-rs/tokio": {
+     "questions": 14,
+     "Diastella's search": 0.5714,
+     "keywords alone": 0.7143,
+     "meaning alone": 0.4286,
+     "rule: the most recently reported bugs": 0.2143
+    },
+    "traefik/traefik": {
+     "questions": 15,
+     "Diastella's search": 0.6,
+     "keywords alone": 0.6,
+     "meaning alone": 0.6,
+     "rule: the most recently reported bugs": 0.4
+    },
+    "vitejs/vite": {
+     "questions": 44,
+     "Diastella's search": 0.3864,
+     "keywords alone": 0.2955,
+     "meaning alone": 0.3409,
+     "rule: the most recently reported bugs": 0.1364
+    }
+   }
+  },
+  "worded differently from the upstream report (under half the title words shared)": {
+   "questions": 950,
+   "upstream_projects": 24,
+   "downstream_projects": 713,
+   "found_in_the_first": {
+    "Diastella's search": {
+     "1": 0.3905,
+     "5": 0.5989,
+     "10": 0.6747
+    },
+    "keywords alone": {
+     "1": 0.3516,
+     "5": 0.5421,
+     "10": 0.6211
+    },
+    "meaning alone": {
+     "1": 0.3284,
+     "5": 0.5316,
+     "10": 0.6211
+    },
+    "Diastella's search, project not named": {
+     "1": 0.3589,
+     "5": 0.5484,
+     "10": 0.6168
+    },
+    "keywords alone, project not named": {
+     "1": 0.3189,
+     "5": 0.4863,
+     "10": 0.5484
+    },
+    "meaning alone, project not named": {
+     "1": 0.3021,
+     "5": 0.4768,
+     "10": 0.5653
+    },
+    "rule: the most recently reported bugs": {
+     "1": 0.1316,
+     "5": 0.2642,
+     "10": 0.3505
+    }
+   },
+   "by_chance_in_the_first_5": 0.0408,
+   "product_against_each_other_in_the_first_5": {
+    "keywords alone": {
+     "difference": 0.0568,
+     "only_first": 80,
+     "only_second": 26,
+     "p": "<0.0001",
+     "interval_95": [
+      0.0358,
+      0.0779
+     ],
+     "interval_95_by_project": [
+      0.0359,
+      0.0776
+     ]
+    },
+    "meaning alone": {
+     "difference": 0.0674,
+     "only_first": 95,
+     "only_second": 31,
+     "p": "<0.0001",
+     "interval_95": [
+      0.0453,
+      0.0905
+     ],
+     "interval_95_by_project": [
+      0.035,
+      0.0928
+     ]
+    },
+    "Diastella's search, project not named": {
+     "difference": 0.0505,
+     "only_first": 50,
+     "only_second": 2,
+     "p": "<0.0001",
+     "interval_95": [
+      0.0358,
+      0.0663
+     ],
+     "interval_95_by_project": [
+      0.0402,
+      0.0622
+     ]
+    },
+    "keywords alone, project not named": {
+     "difference": 0.1126,
+     "only_first": 119,
+     "only_second": 12,
+     "p": "<0.0001",
+     "interval_95": [
+      0.0905,
+      0.1347
+     ],
+     "interval_95_by_project": [
+      0.095,
+      0.1325
+     ]
+    },
+    "meaning alone, project not named": {
+     "difference": 0.1221,
+     "only_first": 136,
+     "only_second": 20,
+     "p": "<0.0001",
+     "interval_95": [
+      0.0968,
+      0.1484
+     ],
+     "interval_95_by_project": [
+      0.0941,
+      0.1537
+     ]
+    },
+    "rule: the most recently reported bugs": {
+     "difference": 0.3347,
+     "only_first": 410,
+     "only_second": 92,
+     "p": "<0.0001",
+     "interval_95": [
+      0.2937,
+      0.3758
+     ],
+     "interval_95_by_project": [
+      0.2974,
+      0.381
+     ]
+    }
+   },
+   "per_upstream_project_first_5": {
+    "PrefectHQ/prefect": {
+     "questions": 5,
+     "Diastella's search": 0.8,
+     "keywords alone": 0.6,
+     "meaning alone": 0.4,
+     "rule: the most recently reported bugs": 0.4
+    },
+    "argoproj/argo-cd": {
+     "questions": 18,
+     "Diastella's search": 0.5,
+     "keywords alone": 0.3333,
+     "meaning alone": 0.4444,
+     "rule: the most recently reported bugs": 0.1667
+    },
+    "caddyserver/caddy": {
+     "questions": 72,
+     "Diastella's search": 0.5972,
+     "keywords alone": 0.5417,
+     "meaning alone": 0.4583,
+     "rule: the most recently reported bugs": 0.25
+    },
+    "celery/celery": {
+     "questions": 35,
+     "Diastella's search": 0.6,
+     "keywords alone": 0.5143,
+     "meaning alone": 0.5429,
+     "rule: the most recently reported bugs": 0.1714
+    },
+    "cli/cli": {
+     "questions": 77,
+     "Diastella's search": 0.6364,
+     "keywords alone": 0.6623,
+     "meaning alone": 0.5584,
+     "rule: the most recently reported bugs": 0.1948
+    },
+    "dapr/dapr": {
+     "questions": 36,
+     "Diastella's search": 0.6667,
+     "keywords alone": 0.6389,
+     "meaning alone": 0.6111,
+     "rule: the most recently reported bugs": 0.4444
+    },
+    "encode/httpx": {
+     "questions": 49,
+     "Diastella's search": 0.6735,
+     "keywords alone": 0.5918,
+     "meaning alone": 0.7143,
+     "rule: the most recently reported bugs": 0.1224
+    },
+    "fastapi/fastapi": {
+     "questions": 34,
+     "Diastella's search": 0.6471,
+     "keywords alone": 0.5882,
+     "meaning alone": 0.5588,
+     "rule: the most recently reported bugs": 0.3824
+    },
+    "gradio-app/gradio": {
+     "questions": 4,
+     "Diastella's search": 0.25,
+     "keywords alone": 0.5,
+     "meaning alone": 0.25,
+     "rule: the most recently reported bugs": 0.25
+    },
+    "grafana/k6": {
+     "questions": 31,
+     "Diastella's search": 0.6774,
+     "keywords alone": 0.5484,
+     "meaning alone": 0.6452,
+     "rule: the most recently reported bugs": 0.2903
+    },
+    "kornia/kornia": {
+     "questions": 7,
+     "Diastella's search": 0.2857,
+     "keywords alone": 0.2857,
+     "meaning alone": 0.2857,
+     "rule: the most recently reported bugs": 0.4286
+    },
+    "kubeflow/pipelines": {
+     "questions": 20,
+     "Diastella's search": 0.6,
+     "keywords alone": 0.45,
+     "meaning alone": 0.6,
+     "rule: the most recently reported bugs": 0.15
+    },
+    "mlflow/mlflow": {
+     "questions": 6,
+     "Diastella's search": 0.8333,
+     "keywords alone": 0.8333,
+     "meaning alone": 0.6667,
+     "rule: the most recently reported bugs": 0.0
+    },
+    "nestjs/nest": {
+     "questions": 7,
+     "Diastella's search": 0.5714,
+     "keywords alone": 0.4286,
+     "meaning alone": 0.4286,
+     "rule: the most recently reported bugs": 0.5714
+    },
+    "open-telemetry/opentelemetry-demo": {
+     "questions": 17,
+     "Diastella's search": 0.4706,
+     "keywords alone": 0.4118,
+     "meaning alone": 0.4118,
+     "rule: the most recently reported bugs": 0.3529
+    },
+    "prometheus/alertmanager": {
+     "questions": 12,
+     "Diastella's search": 0.6667,
+     "keywords alone": 0.5833,
+     "meaning alone": 0.75,
+     "rule: the most recently reported bugs": 0.3333
+    },
+    "pydantic/pydantic": {
+     "questions": 46,
+     "Diastella's search": 0.6304,
+     "keywords alone": 0.587,
+     "meaning alone": 0.4348,
+     "rule: the most recently reported bugs": 0.1739
+    },
+    "pytest-dev/pytest": {
+     "questions": 141,
+     "Diastella's search": 0.4681,
+     "keywords alone": 0.4043,
+     "meaning alone": 0.3759,
+     "rule: the most recently reported bugs": 0.1915
+    },
+    "scrapy/scrapy": {
+     "questions": 32,
+     "Diastella's search": 0.5312,
+     "keywords alone": 0.4375,
+     "meaning alone": 0.5625,
+     "rule: the most recently reported bugs": 0.2188
+    },
+    "streamlit/streamlit": {
+     "questions": 10,
+     "Diastella's search": 0.8,
+     "keywords alone": 0.7,
+     "meaning alone": 0.7,
+     "rule: the most recently reported bugs": 0.3
+    },
+    "sveltejs/svelte": {
+     "questions": 67,
+     "Diastella's search": 0.5821,
+     "keywords alone": 0.5522,
+     "meaning alone": 0.6119,
+     "rule: the most recently reported bugs": 0.2687
+    },
+    "tokio-rs/tokio": {
+     "questions": 52,
+     "Diastella's search": 0.5577,
+     "keywords alone": 0.5577,
+     "meaning alone": 0.4615,
+     "rule: the most recently reported bugs": 0.2692
+    },
+    "traefik/traefik": {
+     "questions": 57,
+     "Diastella's search": 0.7719,
+     "keywords alone": 0.7544,
+     "meaning alone": 0.7368,
+     "rule: the most recently reported bugs": 0.4912
+    },
+    "vitejs/vite": {
+     "questions": 115,
+     "Diastella's search": 0.6174,
+     "keywords alone": 0.5217,
+     "meaning alone": 0.5304,
+     "rule: the most recently reported bugs": 0.3217
+    }
+   }
+  }
+ },
+ "against_githubs_own_search": {
+  "the_writer_had_not_yet_named_the_upstream_bug": {
+   "questions": 297,
+   "the_linked_upstream_bug_was_in_the_first": {
+    "Diastella's search": {
+     "5": 0.4175,
+     "10": 0.5051
+    },
+    "GitHub issue search, keywords": {
+     "5": 0.0976,
+     "10": 0.101,
+     "refused": 0
+    },
+    "GitHub issue search, by meaning": {
+     "5": 0.1111,
+     "10": 0.1347,
+     "refused": 0
+    },
+    "GitHub issue search, both": {
+     "5": 0.1481,
+     "10": 0.1852,
+     "refused": 0
+    },
+    "GitHub, the best of its three searches for each question": {
+     "5": 0.1818,
+     "10": 0.2121
+    }
+   },
+   "diastella_against_each": {
+    "GitHub issue search, keywords": {
+     "difference_in_the_first_5": 0.3199,
+     "only_first": 98,
+     "only_second": 3,
+     "p": "<0.0001",
+     "interval_95": [
+      0.2626,
+      0.3737
+     ],
+     "both_found_it": 26,
+     "only_diastella_found_it": 98,
+     "only_github_found_it": 3,
+     "neither": 170
+    },
+    "GitHub issue search, by meaning": {
+     "difference_in_the_first_5": 0.3064,
+     "only_first": 93,
+     "only_second": 2,
+     "p": "<0.0001",
+     "interval_95": [
+      0.2559,
+      0.3603
+     ],
+     "both_found_it": 31,
+     "only_diastella_found_it": 93,
+     "only_github_found_it": 2,
+     "neither": 171
+    },
+    "GitHub issue search, both": {
+     "difference_in_the_first_5": 0.2694,
+     "only_first": 83,
+     "only_second": 3,
+     "p": "<0.0001",
+     "interval_95": [
+      0.2155,
+      0.3232
+     ],
+     "both_found_it": 41,
+     "only_diastella_found_it": 83,
+     "only_github_found_it": 3,
+     "neither": 170
+    },
+    "GitHub issue search, both, bug-labelled reports only": {
+     "questions": 297,
+     "diastella_in_the_first_5": 0.4175,
+     "github_in_the_first_5": 0.2155,
+     "difference_in_the_first_5": 0.202,
+     "only_first": 72,
+     "only_second": 12,
+     "p": "<0.0001",
+     "interval_95": [
+      0.1448,
+      0.2559
+     ],
+     "only_diastella_found_it": 72,
+     "only_github_found_it": 12
+    }
+   }
+  },
+  "every_pair_asked_so_far": {
+   "questions": 297,
+   "the_linked_upstream_bug_was_in_the_first": {
+    "Diastella's search": {
+     "5": 0.4175,
+     "10": 0.5051
+    },
+    "GitHub issue search, keywords": {
+     "5": 0.0976,
+     "10": 0.101,
+     "refused": 0
+    },
+    "GitHub issue search, by meaning": {
+     "5": 0.1111,
+     "10": 0.1347,
+     "refused": 0
+    },
+    "GitHub issue search, both": {
+     "5": 0.1481,
+     "10": 0.1852,
+     "refused": 0
+    },
+    "GitHub, the best of its three searches for each question": {
+     "5": 0.1818,
+     "10": 0.2121
+    }
+   },
+   "diastella_against_each": {
+    "GitHub issue search, keywords": {
+     "difference_in_the_first_5": 0.3199,
+     "only_first": 98,
+     "only_second": 3,
+     "p": "<0.0001",
+     "interval_95": [
+      0.2626,
+      0.3737
+     ],
+     "both_found_it": 26,
+     "only_diastella_found_it": 98,
+     "only_github_found_it": 3,
+     "neither": 170
+    },
+    "GitHub issue search, by meaning": {
+     "difference_in_the_first_5": 0.3064,
+     "only_first": 93,
+     "only_second": 2,
+     "p": "<0.0001",
+     "interval_95": [
+      0.2559,
+      0.3603
+     ],
+     "both_found_it": 31,
+     "only_diastella_found_it": 93,
+     "only_github_found_it": 2,
+     "neither": 171
+    },
+    "GitHub issue search, both": {
+     "difference_in_the_first_5": 0.2694,
+     "only_first": 83,
+     "only_second": 3,
+     "p": "<0.0001",
+     "interval_95": [
+      0.2155,
+      0.3232
+     ],
+     "both_found_it": 41,
+     "only_diastella_found_it": 83,
+     "only_github_found_it": 3,
+     "neither": 170
+    },
+    "GitHub issue search, both, bug-labelled reports only": {
+     "questions": 297,
+     "diastella_in_the_first_5": 0.4175,
+     "github_in_the_first_5": 0.2155,
+     "difference_in_the_first_5": 0.202,
+     "only_first": 72,
+     "only_second": 12,
+     "p": "<0.0001",
+     "interval_95": [
+      0.1448,
+      0.2559
+     ],
+     "only_diastella_found_it": 72,
+     "only_github_found_it": 12
+    }
+   }
+  },
+  "note": "The same title, the same upstream project, only issues opened before the downstream report. GitHub searches every issue of the project as it reads today, comments included (which can contain the downstream link itself); Diastella searches the project's bug-labelled reports, text and labels as they read today, cut to those opened before the downstream report. GitHub's keyword search is given a second try with fewer words."
+ },
+ "separate_check": {
+  "reviewed_on": "2026-11-17",
+  "reviewed_by": "an automated reviewer (an AI agent that did not write the benchmark); no outside person yet",
+  "figures_recomputed_and_matching": true,
+  "wording_that_may_be_published": "In 297 cases where a report filed in one project was later linked to a bug already reported in a project it uses, and the link was made on a later day than the report, Diastella's search over that project's recent bug-labelled reports (at most 480) put the linked bug in its first five results for 42%, from the report's title alone. GitHub's hybrid issue search, given the same title once and limited to issues with the same bug label, did so for 22% (15% across all of the project's issues). A link is not proof of cause, and these are only cases someone eventually linked.",
+  "what_must_be_said_with_the_numbers": [
+   "The pools differ. Diastella holds at most the 480 most recent bug-labelled reports of a project, and the answer is always among them; GitHub with the label searches every labelled issue opened before the date (thousands in large projects), and without it every issue. On the 65 questions from the 7 projects where both searched exactly the same reports: Diastella 49%, GitHub 31%.",
+   "Most of the lead comes from the small prepared pool, not from the way the two rankings are fused: keywords alone score 38% and meaning alone 36% on the same questions.",
+   "A mention is not a cause. Of 15 pairs read by the reviewer, 12 were a real downstream symptom with an upstream cause, 2 were a commenter's guess and 1 a passing mention.",
+   "The upstream project is not always a library the downstream project depends on: at least 81 of the 297 are servers or tools.",
+   "In 11 of the 297 the downstream report as it reads today already carries the upstream reference (issues that were moved or imported). Without them: 41%, 22% and 15%.",
+   "GitHub's search was given the title word for word, once. It often returns very few results for such a question; a person would rephrase. Only its keyword search was given a second try.",
+   "This measures how often a link people did make would have been found. It says nothing about how often a failure has a known upstream cause, or about false alarms when it has none."
+  ]
+ }
+}

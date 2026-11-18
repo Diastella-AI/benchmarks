@@ -1,0 +1,621 @@
+{
+ "run_on": "2026-11-17",
+ "rules_written_before_scoring": "Written down before any weighting was scored: - The projects are put in alphabetical order and every second one is held out. Settings are chosen on the others only. - Each bug is asked two ways: with its full report (title and text), and with its title alone, which stands in for   the short question a person or a coding agent usually types. - The setting chosen is the one with the highest share of bugs, averaged over the two ways of asking, for which a file   the real fix changed is among the first five returned (the benchmark's headline measure). Between equal settings:   the one nearest the search as it was (words counting more, then the smaller constant). - The search is changed only if, on the held-out projects, the chosen setting is better than the search as it was by   that same average and not more than half a point worse on either way of asking. Whatever the held-out figures are,   they are the ones reported. One thing was known beforehand and is not hidden: the first run's figures per project for meaning alone and for the equal fusion, on full reports, had been seen. The split rule is mechanical and is the one benchmark_meaning.py used.",
+ "grid": {
+  "words_weight": [
+   0.0,
+   0.05,
+   0.1,
+   0.2,
+   0.3,
+   0.5,
+   0.75,
+   1.0
+  ],
+  "constant": [
+   2,
+   10,
+   60
+  ]
+ },
+ "chosen_on": {
+  "projects": [
+   "argoproj/argo-cd",
+   "celery/celery",
+   "dapr/dapr",
+   "gradio-app/gradio",
+   "kornia/kornia",
+   "mlflow/mlflow",
+   "PrefectHQ/prefect",
+   "pydantic/pydantic",
+   "scrapy/scrapy",
+   "sveltejs/svelte",
+   "traefik/traefik"
+  ],
+  "bugs": 1925,
+  "every_setting_file@5": [
+   {
+    "words_weight": 0.0,
+    "constant": 2,
+    "full report": 0.3294,
+    "title alone": 0.3434,
+    "hits": 1295,
+    "average": 0.3364
+   },
+   {
+    "words_weight": 0.05,
+    "constant": 2,
+    "full report": 0.3319,
+    "title alone": 0.3475,
+    "hits": 1308,
+    "average": 0.3397
+   },
+   {
+    "words_weight": 0.1,
+    "constant": 2,
+    "full report": 0.334,
+    "title alone": 0.3501,
+    "hits": 1317,
+    "average": 0.3421
+   },
+   {
+    "words_weight": 0.2,
+    "constant": 2,
+    "full report": 0.333,
+    "title alone": 0.3517,
+    "hits": 1318,
+    "average": 0.3423
+   },
+   {
+    "words_weight": 0.3,
+    "constant": 2,
+    "full report": 0.3351,
+    "title alone": 0.3538,
+    "hits": 1326,
+    "average": 0.3444
+   },
+   {
+    "words_weight": 0.5,
+    "constant": 2,
+    "full report": 0.3345,
+    "title alone": 0.3595,
+    "hits": 1336,
+    "average": 0.347
+   },
+   {
+    "words_weight": 0.75,
+    "constant": 2,
+    "full report": 0.3283,
+    "title alone": 0.359,
+    "hits": 1323,
+    "average": 0.3436
+   },
+   {
+    "words_weight": 1.0,
+    "constant": 2,
+    "full report": 0.3278,
+    "title alone": 0.3621,
+    "hits": 1328,
+    "average": 0.3449
+   },
+   {
+    "words_weight": 0.05,
+    "constant": 10,
+    "full report": 0.3351,
+    "title alone": 0.3517,
+    "hits": 1322,
+    "average": 0.3434
+   },
+   {
+    "words_weight": 0.1,
+    "constant": 10,
+    "full report": 0.3371,
+    "title alone": 0.3553,
+    "hits": 1333,
+    "average": 0.3462
+   },
+   {
+    "words_weight": 0.2,
+    "constant": 10,
+    "full report": 0.3377,
+    "title alone": 0.3564,
+    "hits": 1336,
+    "average": 0.347
+   },
+   {
+    "words_weight": 0.3,
+    "constant": 10,
+    "full report": 0.3366,
+    "title alone": 0.3631,
+    "hits": 1347,
+    "average": 0.3499
+   },
+   {
+    "words_weight": 0.5,
+    "constant": 10,
+    "full report": 0.334,
+    "title alone": 0.3657,
+    "hits": 1347,
+    "average": 0.3499
+   },
+   {
+    "words_weight": 0.75,
+    "constant": 10,
+    "full report": 0.3304,
+    "title alone": 0.3668,
+    "hits": 1342,
+    "average": 0.3486
+   },
+   {
+    "words_weight": 1.0,
+    "constant": 10,
+    "full report": 0.3273,
+    "title alone": 0.3673,
+    "hits": 1337,
+    "average": 0.3473
+   },
+   {
+    "words_weight": 0.05,
+    "constant": 60,
+    "full report": 0.3268,
+    "title alone": 0.3621,
+    "hits": 1326,
+    "average": 0.3444
+   },
+   {
+    "words_weight": 0.1,
+    "constant": 60,
+    "full report": 0.3257,
+    "title alone": 0.3636,
+    "hits": 1327,
+    "average": 0.3447
+   },
+   {
+    "words_weight": 0.2,
+    "constant": 60,
+    "full report": 0.3174,
+    "title alone": 0.3631,
+    "hits": 1310,
+    "average": 0.3403
+   },
+   {
+    "words_weight": 0.3,
+    "constant": 60,
+    "full report": 0.3179,
+    "title alone": 0.3584,
+    "hits": 1302,
+    "average": 0.3382
+   },
+   {
+    "words_weight": 0.5,
+    "constant": 60,
+    "full report": 0.3169,
+    "title alone": 0.361,
+    "hits": 1305,
+    "average": 0.339
+   },
+   {
+    "words_weight": 0.75,
+    "constant": 60,
+    "full report": 0.3179,
+    "title alone": 0.3647,
+    "hits": 1314,
+    "average": 0.3413
+   },
+   {
+    "words_weight": 1.0,
+    "constant": 60,
+    "full report": 0.321,
+    "title alone": 0.3626,
+    "hits": 1316,
+    "average": 0.3418
+   }
+  ]
+ },
+ "chosen": {
+  "words_weight": 0.5,
+  "constant": 10
+ },
+ "tied_on_the_choosing_half": [
+  {
+   "words_weight": 0.3,
+   "constant": 10,
+   "hits": 1347,
+   "picked_by_the_rule": false
+  },
+  {
+   "words_weight": 0.5,
+   "constant": 10,
+   "hits": 1347,
+   "picked_by_the_rule": true
+  }
+ ],
+ "on_the_half_used_to_choose_file@5": {
+  "full report": {
+   "search as it was (words and meaning equal)": 0.3278,
+   "chosen weighting": 0.334,
+   "meaning alone": 0.3294
+  },
+  "title alone": {
+   "search as it was (words and meaning equal)": 0.3621,
+   "chosen weighting": 0.3657,
+   "meaning alone": 0.3434
+  }
+ },
+ "held_out": {
+  "projects": [
+   "caddyserver/caddy",
+   "cli/cli",
+   "encode/httpx",
+   "grafana/k6",
+   "kubeflow/pipelines",
+   "open-telemetry/opentelemetry-demo",
+   "prometheus/alertmanager",
+   "pytest-dev/pytest",
+   "streamlit/streamlit",
+   "tokio-rs/tokio",
+   "vitejs/vite"
+  ],
+  "bugs": 1258,
+  "results": {
+   "full report": {
+    "search as it was (words and meaning equal)": {
+     "file@3": 0.2981,
+     "file@5": 0.3688,
+     "file@10": 0.4817,
+     "bug@1": 0.2226
+    },
+    "chosen weighting": {
+     "file@3": 0.2981,
+     "file@5": 0.3657,
+     "file@10": 0.4857,
+     "bug@1": 0.225
+    },
+    "meaning alone": {
+     "file@3": 0.3203,
+     "file@5": 0.3959,
+     "file@10": 0.4897,
+     "bug@1": 0.248
+    }
+   },
+   "title alone": {
+    "search as it was (words and meaning equal)": {
+     "file@3": 0.3196,
+     "file@5": 0.3911,
+     "file@10": 0.4944,
+     "bug@1": 0.2695
+    },
+    "chosen weighting": {
+     "file@3": 0.3211,
+     "file@5": 0.3927,
+     "file@10": 0.5032,
+     "bug@1": 0.2711
+    },
+    "meaning alone": {
+     "file@3": 0.3124,
+     "file@5": 0.3808,
+     "file@10": 0.4865,
+     "bug@1": 0.2377
+    }
+   }
+  },
+  "chosen_against_search_as_it_was_file@5": {
+   "full report": {
+    "difference": -0.0032,
+    "hits": [
+     460,
+     464
+    ],
+    "only_first": 24,
+    "only_second": 28,
+    "p": 0.6778,
+    "interval_95": [
+     -0.0143,
+     0.0079
+    ]
+   },
+   "title alone": {
+    "difference": 0.0016,
+    "hits": [
+     494,
+     492
+    ],
+    "only_first": 23,
+    "only_second": 21,
+    "p": 0.8804,
+    "interval_95": [
+     -0.0087,
+     0.0127
+    ]
+   },
+   "average of the two": {
+    "difference": -0.0008
+   }
+  },
+  "other_tied_settings_against_search_as_it_was_file@5": [
+   {
+    "words_weight": 0.3,
+    "constant": 10,
+    "full report": {
+     "difference": 0.0064,
+     "hits": [
+      472,
+      464
+     ],
+     "only_first": 31,
+     "only_second": 23,
+     "p": 0.3409,
+     "interval_95": [
+      -0.0048,
+      0.0175
+     ]
+    },
+    "title alone": {
+     "difference": 0.0056,
+     "hits": [
+      499,
+      492
+     ],
+     "only_first": 26,
+     "only_second": 19,
+     "p": 0.3713,
+     "interval_95": [
+      -0.0048,
+      0.0159
+     ]
+    },
+    "average of the two": {
+     "difference": 0.006
+    },
+    "would_have_passed_the_rule": true
+   }
+  ],
+  "chosen_against_meaning_alone_file@5": {
+   "full report": {
+    "difference": -0.0302,
+    "hits": [
+     460,
+     498
+    ],
+    "only_first": 46,
+    "only_second": 84,
+    "p": 0.0011,
+    "interval_95": [
+     -0.0485,
+     -0.0127
+    ]
+   },
+   "title alone": {
+    "difference": 0.0119,
+    "hits": [
+     494,
+     479
+    ],
+    "only_first": 64,
+    "only_second": 49,
+    "p": 0.1876,
+    "interval_95": [
+     -0.0048,
+     0.0286
+    ]
+   },
+   "average of the two": {
+    "difference": -0.0091
+   }
+  },
+  "per_project_file@5": {
+   "caddyserver/caddy": {
+    "bugs": 232,
+    "full report": {
+     "search as it was (words and meaning equal)": 0.4655,
+     "chosen weighting": 0.4612,
+     "meaning alone": 0.5129
+    },
+    "title alone": {
+     "search as it was (words and meaning equal)": 0.4871,
+     "chosen weighting": 0.4741,
+     "meaning alone": 0.5086
+    }
+   },
+   "cli/cli": {
+    "bugs": 63,
+    "full report": {
+     "search as it was (words and meaning equal)": 0.3492,
+     "chosen weighting": 0.3492,
+     "meaning alone": 0.3175
+    },
+    "title alone": {
+     "search as it was (words and meaning equal)": 0.3175,
+     "chosen weighting": 0.3175,
+     "meaning alone": 0.3333
+    }
+   },
+   "encode/httpx": {
+    "bugs": 46,
+    "full report": {
+     "search as it was (words and meaning equal)": 0.3913,
+     "chosen weighting": 0.413,
+     "meaning alone": 0.3261
+    },
+    "title alone": {
+     "search as it was (words and meaning equal)": 0.2826,
+     "chosen weighting": 0.2826,
+     "meaning alone": 0.2609
+    }
+   },
+   "grafana/k6": {
+    "bugs": 89,
+    "full report": {
+     "search as it was (words and meaning equal)": 0.0899,
+     "chosen weighting": 0.0899,
+     "meaning alone": 0.1236
+    },
+    "title alone": {
+     "search as it was (words and meaning equal)": 0.1236,
+     "chosen weighting": 0.1236,
+     "meaning alone": 0.1011
+    }
+   },
+   "kubeflow/pipelines": {
+    "bugs": 72,
+    "full report": {
+     "search as it was (words and meaning equal)": 0.2361,
+     "chosen weighting": 0.2361,
+     "meaning alone": 0.1944
+    },
+    "title alone": {
+     "search as it was (words and meaning equal)": 0.2361,
+     "chosen weighting": 0.25,
+     "meaning alone": 0.1667
+    }
+   },
+   "open-telemetry/opentelemetry-demo": {
+    "bugs": 22,
+    "full report": {
+     "search as it was (words and meaning equal)": 0.1364,
+     "chosen weighting": 0.1818,
+     "meaning alone": 0.1818
+    },
+    "title alone": {
+     "search as it was (words and meaning equal)": 0.1364,
+     "chosen weighting": 0.1364,
+     "meaning alone": 0.1364
+    }
+   },
+   "prometheus/alertmanager": {
+    "bugs": 14,
+    "full report": {
+     "search as it was (words and meaning equal)": 0.3571,
+     "chosen weighting": 0.4286,
+     "meaning alone": 0.4286
+    },
+    "title alone": {
+     "search as it was (words and meaning equal)": 0.4286,
+     "chosen weighting": 0.4286,
+     "meaning alone": 0.4286
+    }
+   },
+   "pytest-dev/pytest": {
+    "bugs": 174,
+    "full report": {
+     "search as it was (words and meaning equal)": 0.477,
+     "chosen weighting": 0.4655,
+     "meaning alone": 0.523
+    },
+    "title alone": {
+     "search as it was (words and meaning equal)": 0.454,
+     "chosen weighting": 0.4655,
+     "meaning alone": 0.454
+    }
+   },
+   "streamlit/streamlit": {
+    "bugs": 169,
+    "full report": {
+     "search as it was (words and meaning equal)": 0.3491,
+     "chosen weighting": 0.3491,
+     "meaning alone": 0.3846
+    },
+    "title alone": {
+     "search as it was (words and meaning equal)": 0.3846,
+     "chosen weighting": 0.3964,
+     "meaning alone": 0.3964
+    }
+   },
+   "tokio-rs/tokio": {
+    "bugs": 110,
+    "full report": {
+     "search as it was (words and meaning equal)": 0.2727,
+     "chosen weighting": 0.2636,
+     "meaning alone": 0.2818
+    },
+    "title alone": {
+     "search as it was (words and meaning equal)": 0.3182,
+     "chosen weighting": 0.3091,
+     "meaning alone": 0.2909
+    }
+   },
+   "vitejs/vite": {
+    "bugs": 267,
+    "full report": {
+     "search as it was (words and meaning equal)": 0.4157,
+     "chosen weighting": 0.4045,
+     "meaning alone": 0.4569
+    },
+    "title alone": {
+     "search as it was (words and meaning equal)": 0.4869,
+     "chosen weighting": 0.4906,
+     "meaning alone": 0.4494
+    }
+   }
+  }
+ },
+ "decision": {
+  "average_gain_held_out": -0.0008,
+  "worst_way_of_asking": -0.0032,
+  "change_the_search": false,
+  "outcome": "inconclusive: no tied setting can be told from the search as it was"
+ },
+ "formula_check": {
+  "offline_fusion_against_the_search_service": {
+   "plain fusion": {
+    "questions": 136,
+    "same_first_five": 127,
+    "same_first_twenty": 115,
+    "largest_score_gap": 1e-07
+   },
+   "words 0.0, constant 2": {
+    "questions": 136,
+    "same_first_five": 136,
+    "same_first_twenty": 136,
+    "largest_score_gap": 0.0
+   },
+   "words 0.05, constant 2": {
+    "questions": 136,
+    "same_first_five": 136,
+    "same_first_twenty": 135,
+    "largest_score_gap": 1e-07
+   },
+   "words 0.3, constant 10": {
+    "questions": 136,
+    "same_first_five": 136,
+    "same_first_twenty": 136,
+    "largest_score_gap": 0.0
+   },
+   "words 0.5, constant 10": {
+    "questions": 136,
+    "same_first_five": 133,
+    "same_first_twenty": 129,
+    "largest_score_gap": 0.0
+   },
+   "words 0.5, constant 60": {
+    "questions": 136,
+    "same_first_five": 133,
+    "same_first_twenty": 130,
+    "largest_score_gap": 0.0
+   },
+   "words 0.75, constant 2": {
+    "questions": 136,
+    "same_first_five": 136,
+    "same_first_twenty": 133,
+    "largest_score_gap": 1e-07
+   },
+   "words 1.0, constant 60": {
+    "questions": 136,
+    "same_first_five": 131,
+    "same_first_twenty": 126,
+    "largest_score_gap": 0.0
+   }
+  },
+  "highest_scores_of_the_plain_fusion": [
+   0.75,
+   0.8333,
+   1.0
+  ],
+  "note": "Where the order differs and the scores do not, the records have exactly equal scores and the service orders them as it likes."
+ },
+ "notes": [
+  "The search as it was is scored from the search service's own answers, recorded with the rankings, because the order it gives records with exactly equal scores cannot be reproduced offline. Every other setting is computed offline by a formula checked against the service (formula_check).",
+  "The decision rests on a handful of bugs: the difference on the held-out half is smaller than the movement of the search as it was between two runs (order among equal scores). The test could not have told a gain of about one point from none; its intervals are about one point either side.",
+  "Reviewers who scored the whole grid on the held-out half afterwards found about half the settings slightly above the search as it was (0.6 to 1.2 points, almost all from report questions) and half below. That look is after the fact and chooses nothing; it says the question is open for report questions and needs projects not yet seen."
+ ]
+}
